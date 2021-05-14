@@ -1,35 +1,43 @@
-let main = document.querySelector("main")
+// let container = document.querySelector("#container")
 
-let container = document.createElement("main")
+// // let pagesArray = []
 
-let h1 = document.createElement("h1")
-h1.append("DOM demo")
+// for (let index = 0; index <= pages.length; index += 1) {
+//     let page = document.createElement('p')
+    
+//     // page.append(pages[index])
+//     page.append(pages[index])
 
-container.append(h1)
+//     //page.style.margin = '30px'
+//     page.classList.add('page')
+     
+//     console.log(page)
 
+//     container.append(page)
+// }
 
-// article > h1 > text
-//         > p  > text
+let container = document.querySelector("#container")
 
-main.append(container)
+for (let index = 0; index <= pages.length; index += 1) {
+    let page = document.createElement('article')
 
-function createPage(page, index) {
-    let article = document.createElement('article')
+    let pageNumber = document.createElement('h1')
 
-    let p = document.createElement("p")
-    p.append(page)
-    let header = document.createElement("h1")
-    header.id = index + 1
-    header.append(`${index + 1}.`)
-    article.append(header)
-    article.append(p)
+    // if we want to use innerHTML be wary that element.innerHTML will replace ALL child elements.
+    // let htmlString = `<h1>Page: ${index + 1}<h1>`
+    // htmlString += `Page: ${pages[index]}`
+    // pageNumber.innerHTML += htmlString
 
-    return article;
+    pageNumber.append(`Page: ${index + 1}`)
+    page.append(pageNumber)
+
+    let pageText = document.createElement('p')
+    pageText.append(pages[index])
+
+    page.append(pageText)
+    container.append(page)
+
+    // console.log(pageNumber)
 }
-
-for (let index = 0; index < pages.length; index += 1) {
-    let article = createPage(pages[index], index)
-    container.append(article);
-}
-
-
+// console.log(container)
+// console.log(pages)
